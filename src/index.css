@@ -1,1 +1,37 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+  font-style: normal;
+  font-display: swap;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Colors */
+  --color-gray-950: #111517;
+  --color-gray-400: #808080;
+  --color-gray-350: #979797;
+  --color-gray-300: #B2B2B2;
+  --color-gray-250: #C4C4C4;
+  --color-gray-50: #FCFCFC;
+  --color-blue-950: #202C36;
+  --color-blue-900: #2B3844;
+
+  /* Spacing */
+  --spacing-100: 0.5rem;
+  --spacing-200: 1rem;
+  --spacing-300: 1.5rem;
+  --spacing-400: 2rem;
+  --spacing-500: 2.5rem;
+  --spacing-600: 3rem;
+  --spacing-700: 3.5rem;
+  --spacing-800: 4rem;
+  --spacing-900: 4.5rem;
+  --spacing-1000: 5rem;
+
+  /* Typography */
+  --font-sans: 'Nunito Sans', sans-serif;
+}
