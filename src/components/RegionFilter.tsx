@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 
-export default function CustomDropdown() {
+export default function RegionFilter() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedValue, setSelectedValue] = useState<string>('Filter by Region');
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -33,26 +33,24 @@ export default function CustomDropdown() {
   };
 
   return (
-    <div className="w-1/2 relative" ref={dropdownRef}>
-      {/* Dropdown Button */}
+    <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full dark:bg-blue-900 text-white py-5  px-6 rounded-md flex items-center justify-between hover:bg-slate-600 transition-colors lg:w-1/2"
+        className="dark:bg-blue-900 w-full bg-white text-sm dark:text-white text-gray-900 py-4 px-4 rounded-md flex items-center justify-between hover:opacity-90 transition-opacity shadow-sm border-0 focus:outline-none focus:ring-2 cursor-pointer focus:ring-blue-500"
       >
-        <span className="text-xs">{selectedValue}</span>
+        <span>{selectedValue}</span>
         <ChevronDown 
           className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} 
         />
       </button>
 
-      {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute mt-2 md:w-full dark:bg-blue-900 rounded-md md:mt-2 shadow-lg z-10 overflow-hidden">
+        <div className="absolute top-full mt-1 w-full dark:bg-blue-900 bg-white rounded-md shadow-lg z-50 border dark:border-gray-700 border-gray-200">
           {options.map((option) => (
             <button
               key={option}
               onClick={() => handleSelect(option)}
-              className="w-full text-left px-4 py-3 text-white text-xs hover:bg-slate-600 transition-colors"
+              className="w-full text-left px-4 py-3 dark:text-white text-gray-900 text-sm hover:dark:bg-blue-800 hover:bg-gray-100 transition-colors first:rounded-t-md last:rounded-b-md cursor-pointer"
             >
               {option}
             </button>

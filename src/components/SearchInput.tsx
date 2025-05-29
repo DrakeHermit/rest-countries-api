@@ -1,11 +1,15 @@
 export const SearchInput = () => {
   return (
-    <div className="flex items-center mb-500 md:w-1/2 relative">
-      <img src="/src/assets/search.svg" className="absolute left-500" alt="Search Icon" />
+    <div className="relative">
+      <img 
+        src="/src/assets/search.svg" 
+        className="absolute left-500 top-1/2 transform -translate-y-1/2 w-4 h-4" 
+        alt="Search Icon" 
+      />
       <input
         type="text"
         placeholder="Search for a country..."
-        className="w-full py-5 pl-18 lg:w-9/12 border border-none rounded-md dark:bg-blue-900 text-xs dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="py-4 pl-18 pr-6 rounded-md dark:bg-blue-900 w-full bg-white text-sm dark:text-white text-gray-900 border-0 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
       />
     </div>
   )
