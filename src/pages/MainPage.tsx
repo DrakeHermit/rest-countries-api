@@ -1,3 +1,4 @@
+import { CountriesGrid } from "../components/CountriesGrid";
 import RegionFilter from "../components/RegionFilter";
 import { SearchInput } from "../components/SearchInput";
 
@@ -12,6 +13,7 @@ export const MainPage = () => {
           <RegionFilter />
         </div>
       </div>
+      <CountriesGrid />
     </>
   );
 };
