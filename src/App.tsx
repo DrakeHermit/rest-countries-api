@@ -5,25 +5,14 @@ import { CountryPage } from "./pages/CountryPage";
 import { MainPage } from "./pages/MainPage";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
-
-const allCountriesLoader = async () => {
-  await queryClient.prefetchQuery({
-    queryKey: ["countries"],
-    queryFn: async () => {
-      const response = await fetch("https://restcountries.com/v3.1/all");
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    },
-  });
-};
+import { allCountriesLoader, countryLoader } from "./lib/loaders";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
     loader: allCountriesLoader,
+    hydrateFallbackElement: <div>Loading countries...</div>,
     children: [
       {
         index: true,
@@ -32,12 +21,12 @@ const router = createBrowserRouter([
       {
         path: "country/:countryName",
         element: <CountryPage />,
+        loader: countryLoader,
+        hydrateFallbackElement: <div>Loading country...</div>,
       },
     ],
   },
 ]);
-
-console.log(allCountriesLoader);
 
 function App() {
   return (
