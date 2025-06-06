@@ -1,8 +1,16 @@
 import { CountriesGrid } from "../components/CountriesGrid";
 import RegionFilter from "../components/RegionFilter";
 import { SearchInput } from "../components/SearchInput";
+import { useOutletContext } from "react-router";
+import type { Country } from "../lib/api";
+
+interface OutletContext {
+  countries: Country[];
+}
 
 export const MainPage = () => {
+  const { countries } = useOutletContext<OutletContext>();
+
   return (
     <>
       <div className="flex flex-col py-300 px-200 gap-2 mb-400 md:flex-row md:justify-between md:items-center md:px-500 lg:px-1000">
@@ -13,7 +21,7 @@ export const MainPage = () => {
           <RegionFilter />
         </div>
       </div>
-      <CountriesGrid />
+      <CountriesGrid data={countries} />
     </>
   );
 };
