@@ -6,17 +6,25 @@ interface CountriesGridProps {
 
 export const CountriesGrid = ({ data }: CountriesGridProps) => {
   return (
-    <div className="countries-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-350 md:px-500 lg:px-1000">
+    <div className="countries-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-900 px-350 md:px-500 lg:px-1000">
       {data.map((country) => (
         <article
           key={country.name.common}
           className="bg-white dark:bg-blue-900 rounded-lg shadow-md"
         >
-          {/* <img src={country.flags.png} alt={country.flags.alt || `${country.name.common} flag`} /> */}
-          <h2>{country.name.common}</h2>
-          <p>Population: {country.population.toLocaleString()}</p>
-          <p>Region: {country.region}</p>
-          <p>Capital: {country.capital?.[0] || "N/A"}</p>
+          <img
+            className="w-full h-48 object-center rounded-t-sm"
+            src={country.flags.png}
+            alt={country.flags.alt || `${country.name.common} flag`}
+          />
+          <div className="px-400 pt-300 pb-600">
+            <h2 className="mb-200">{country.name.common}</h2>
+            <p className="mb-2">
+              Population: {country.population.toLocaleString()}
+            </p>
+            <p className="mb-2">Region: {country.region}</p>
+            <p className="mb-2">Capital: {country.capital?.[0] || "N/A"}</p>
+          </div>
         </article>
       ))}
     </div>

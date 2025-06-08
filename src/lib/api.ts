@@ -11,7 +11,6 @@ export interface Country {
     svg: string;
     alt?: string;
   };
-  [key: string]: any;
 }
 
 export const fetchAllCountries = async (): Promise<Country[]> => {
