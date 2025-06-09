@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import type { Country } from "../lib/api";
 
 interface CountriesGridProps {
@@ -12,11 +13,13 @@ export const CountriesGrid = ({ data }: CountriesGridProps) => {
           key={country.name.common}
           className="bg-white dark:bg-blue-900 rounded-lg shadow-md"
         >
-          <img
-            className="w-full h-48 object-center rounded-t-sm"
-            src={country.flags.png}
-            alt={country.flags.alt || `${country.name.common} flag`}
-          />
+          <Link to={`/country/${country.name.common}`}>
+            <img
+              className="w-full h-48 object-center rounded-t-sm"
+              src={country.flags.png}
+              alt={country.flags.alt || `${country.name.common} flag`}
+            />
+          </Link>
           <div className="px-400 pt-300 pb-600">
             <h2 className="mb-200">{country.name.common}</h2>
             <p className="mb-2">
