@@ -1,17 +1,28 @@
+import { useTheme } from "../context/themeContext";
+
 export const NavBar = () => {
+  const { isDarkMode, toggleTheme } = useTheme();
+
   return (
-    <nav className="flex justify-between font-sans items-center bg-white dark:bg-blue-900 py-400 md:px-500 px-200 shadow-md">
+    <nav className="flex justify-between font-sans items-center bg-white dark:bg-blue-900 py-400 lg:py-300 md:px-500 px-200 shadow-lg">
       <div className="lg:max-w-[1600px] mx-auto flex justify-between items-center w-full">
         <header className="text-gray-950 dark:text-white text-sm font-extrabold">
           <h1 className="lg:text-2xl">Where in the world?</h1>
         </header>
-        <button className="flex items-center dark:text-white text-gray-900 gap-2 text-xs cursor-pointer">
+        <button
+          className="flex items-center dark:text-white text-gray-900 gap-2 text-xs cursor-pointer"
+          onClick={toggleTheme}
+        >
           <img
-            src="/src/assets/light-mode-toggle.svg"
+            src={
+              isDarkMode
+                ? "/src/assets/light-mode-toggle.svg"
+                : "/src/assets/dark-mode-toggle.svg"
+            }
             className="w-4 h-4"
             alt="Icon to change the theme"
           />{" "}
-          Dark Mode
+          {isDarkMode ? "Light Mode" : "Dark Mode"}
         </button>
       </div>
     </nav>

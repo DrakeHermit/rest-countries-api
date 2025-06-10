@@ -39,9 +39,9 @@ export const CountryPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
               {/* Left Column */}
               <div className="space-y-2">
-                <p>
-                  <span className="font-semibold">
-                    Native Name:{" "}
+                <p className="font-semibold">
+                  Native Name:{" "}
+                  <span className="font-normal">
                     {country.name.nativeName
                       ? Object.values(country.name.nativeName)
                           .map((value) => value.common)
@@ -51,19 +51,21 @@ export const CountryPage = () => {
                   {/* your native name logic */}
                 </p>
                 <p className="font-semibold">
-                  Population: <span>{country.population.toLocaleString()}</span>
+                  Population:{" "}
+                  <span className="font-normal">
+                    {country.population.toLocaleString()}
+                  </span>
                 </p>
-                <p>
-                  <span className="font-semibold">Region:</span>{" "}
-                  {country.region}
+                <p className="font-semibold">
+                  Region: <span className="font-normal">{country.region}</span>
                 </p>
-                <p>
-                  <span className="font-semibold">Sub Region:</span>{" "}
-                  {country.subregion}
+                <p className="font-semibold">
+                  Sub Region:
+                  <span className="font-normal"> {country.subregion}</span>
                 </p>
-                <p>
-                  <span className="font-semibold">Capital:</span>{" "}
-                  {country.capital?.[0]}
+                <p className="font-semibold">
+                  Capital:
+                  <span className="font-normal"> {country.capital?.[0]}</span>
                 </p>
               </div>
               {/* Right Column */}

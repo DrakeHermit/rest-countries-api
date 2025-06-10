@@ -20,7 +20,7 @@ export interface Country {
 }
 
 export const fetchAllCountries = async (): Promise<Country[]> => {
-  const response = await fetch('https://restcountries.com/v3.1/all');
+  const response = await fetch('https://restcountries.com/v3.1/all?fields=name,capital,region,population,flags,subregion,tld,currencies,languages,borders');
   const countries = await response.json();
   return countries;
 };

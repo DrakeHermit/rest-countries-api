@@ -13,20 +13,30 @@ export const CountriesGrid = ({ data }: CountriesGridProps) => {
           key={country.name.common}
           className="bg-white dark:bg-blue-900 rounded-lg shadow-md"
         >
-          <Link to={`/country/${country.name.common}`}>
+          <Link to={`/country/${country.name.common.toLowerCase()}`}>
             <img
-              className="w-full h-48 object-center rounded-t-sm"
+              className="w-full h-48 object-center rounded-t-sm shadow-md"
               src={country.flags.png}
               alt={country.flags.alt || `${country.name.common} flag`}
             />
           </Link>
           <div className="px-400 pt-300 pb-600">
-            <h2 className="mb-200">{country.name.common}</h2>
-            <p className="mb-2">
-              Population: {country.population.toLocaleString()}
+            <h2 className="mb-200 font-bold">{country.name.common}</h2>
+            <p className="mb-2 font-bold">
+              Population:{" "}
+              <span className="font-normal">
+                {country.population.toLocaleString()}
+              </span>
             </p>
-            <p className="mb-2">Region: {country.region}</p>
-            <p className="mb-2">Capital: {country.capital?.[0] || "N/A"}</p>
+            <p className="mb-2 font-bold">
+              Region: <span className="font-normal">{country.region}</span>
+            </p>
+            <p className="mb-2 font-bold">
+              Capital:{" "}
+              <span className="font-normal">
+                {country.capital?.[0] || "N/A"}
+              </span>
+            </p>
           </div>
         </article>
       ))}
