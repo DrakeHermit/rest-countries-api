@@ -1,35 +1,43 @@
-import { useState, useRef, useEffect } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { useState, useRef, useEffect } from "react";
+import { ChevronDown } from "lucide-react";
 
-export default function RegionFilter() {
+interface RegionFilterProps {
+  regionFilter?: string;
+  onFilterChange?: (region: string) => void;
+}
+
+export default function RegionFilter({
+  regionFilter,
+  onFilterChange,
+}: RegionFilterProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedValue, setSelectedValue] = useState<string>('Filter by Region');
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const options = [
-    'Africa',
-    'America', 
-    'Asia',
-    'Europe',
-    'Oceania'
-  ];
+  const options = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
+
+  const displayValue = regionFilter || "Filter by Region";
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     }
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
   const handleSelect = (option: string) => {
-    setSelectedValue(option);
     setIsOpen(false);
+    if (onFilterChange) {
+      onFilterChange(option);
+    }
   };
 
   return (
@@ -38,9 +46,11 @@ export default function RegionFilter() {
         onClick={() => setIsOpen(!isOpen)}
         className="dark:bg-blue-900 w-full bg-white text-sm dark:text-white text-gray-900 py-4 px-4 rounded-md flex items-center justify-between hover:opacity-90 transition-opacity shadow-sm border-0 focus:outline-none focus:ring-2 cursor-pointer focus:ring-blue-500"
       >
-        <span>{selectedValue}</span>
-        <ChevronDown 
-          className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} 
+        <span>{displayValue}</span>
+        <ChevronDown
+          className={`w-4 h-4 transition-transform ${
+            isOpen ? "rotate-180" : ""
+          }`}
         />
       </button>
 

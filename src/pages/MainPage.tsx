@@ -12,13 +12,14 @@ interface OutletContext {
 export const MainPage = () => {
   const { countries } = useOutletContext<OutletContext>();
   const [searchTerm, setSearchTerm] = useState("");
+  const [regionFilter, setRegionFilter] = useState("");
 
   const filteredCountries = countries.filter((country) => {
     const matchesSearch =
       !searchTerm ||
       country.name.common.toLowerCase().startsWith(searchTerm.toLowerCase());
-
-    return matchesSearch;
+    const matchesRegion = !regionFilter || country.region === regionFilter;
+    return matchesSearch && matchesRegion;
   });
 
   return (
@@ -28,7 +29,10 @@ export const MainPage = () => {
           <SearchInput searchTerm={searchTerm} onSearchChange={setSearchTerm} />
         </div>
         <div className="w-1/2 md:w-80 md:ml-auto lg:w-96">
-          <RegionFilter />
+          <RegionFilter
+            regionFilter={regionFilter}
+            onFilterChange={setRegionFilter}
+          />
         </div>
       </div>
       <CountriesGrid data={filteredCountries} />
