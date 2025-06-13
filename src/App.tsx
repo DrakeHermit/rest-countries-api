@@ -14,6 +14,7 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     loader: allCountriesLoader,
     hydrateFallbackElement: <div>Loading countries...</div>,
+    errorElement: <div>Error loading countries data.</div>,
     children: [
       {
         index: true,
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
         element: <CountryPage />,
         loader: countryLoader,
         hydrateFallbackElement: <div>Loading country...</div>,
+        errorElement: <div>Error loading country data.</div>,
       },
     ],
   },

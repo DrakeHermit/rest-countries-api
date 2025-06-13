@@ -5,7 +5,7 @@ export const NavBar = () => {
 
   return (
     <nav className="flex justify-between font-sans items-center bg-white dark:bg-blue-900 py-400 lg:py-300 md:px-500 px-200 shadow-md sticky top-0 z-50">
-      <div className="lg:max-w-[1600px] mx-auto flex justify-between items-center w-full">
+      <div className="lg:max-w-[1272px] mx-auto flex justify-between items-center w-full">
         <header className="text-gray-950 dark:text-white text-sm font-extrabold">
           <h1 className="lg:text-2xl">Where in the world?</h1>
         </header>

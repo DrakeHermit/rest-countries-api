@@ -7,7 +7,7 @@ interface CountriesGridProps {
 
 export const CountriesGrid = ({ data }: CountriesGridProps) => {
   return (
-    <div className="countries-grid grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4 font gap-900 px-350 md:px-500 lg:px-1000">
+    <div className="countries-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-900 px-350 md:px-500 lg:px-0">
       {data.map((country) => (
         <article
           key={country.name.common}

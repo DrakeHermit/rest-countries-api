@@ -24,18 +24,23 @@ export const MainPage = () => {
 
   return (
     <>
-      <div className="flex flex-col py-300 px-200 gap-2 mb-400 md:flex-row md:justify-between md:items-center md:px-500 lg:px-1000">
-        <div className="w-full md:flex-1 md:max-w-md mb-500 md:mb-0">
-          <SearchInput searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+      <div className="max-w-[1272px] mx-auto">
+        <div className="flex flex-col py-300 px-200 gap-2 mb-400 md:flex-row md:justify-between md:items-center md:px-500 lg:px-0">
+          <div className="w-full md:flex-1 md:max-w-md mb-500 md:mb-0">
+            <SearchInput
+              searchTerm={searchTerm}
+              onSearchChange={setSearchTerm}
+            />
+          </div>
+          <div className="w-1/2 md:w-80 md:ml-auto lg:w-96">
+            <RegionFilter
+              regionFilter={regionFilter}
+              onFilterChange={setRegionFilter}
+            />
+          </div>
         </div>
-        <div className="w-1/2 md:w-80 md:ml-auto lg:w-96">
-          <RegionFilter
-            regionFilter={regionFilter}
-            onFilterChange={setRegionFilter}
-          />
-        </div>
+        <CountriesGrid data={filteredCountries} />
       </div>
-      <CountriesGrid data={filteredCountries} />
     </>
   );
 };
