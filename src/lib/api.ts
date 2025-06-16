@@ -28,6 +28,5 @@ export const fetchAllCountries = async (): Promise<Country[]> => {
 export const fetchCountryByName = async (name: string): Promise<Country> => {
   const response = await fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true`);
   const countries = await response.json();
-  console.log(countries[0])
   return countries[0];
 };

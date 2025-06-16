@@ -7,6 +7,7 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { allCountriesLoader, countryLoader } from "./lib/loaders";
 import { ThemeProvider } from "./context/themeContext";
+import { ErrorPage } from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
         loader: countryLoader,
         hydrateFallbackElement: <div>Loading country...</div>,
         errorElement: <div>Error loading country data.</div>,
+      },
+      {
+        path: "*",
+        element: <ErrorPage />,
       },
     ],
   },
