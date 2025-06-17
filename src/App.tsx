@@ -8,14 +8,15 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { allCountriesLoader, countryLoader } from "./lib/loaders";
 import { ThemeProvider } from "./context/themeContext";
 import { ErrorPage } from "./pages/ErrorPage";
+import { LoadingSpinner } from "./components/LoadingSpinner";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
     loader: allCountriesLoader,
-    hydrateFallbackElement: <div>Loading countries...</div>,
-    errorElement: <div>Error loading countries data.</div>,
+    hydrateFallbackElement: <LoadingSpinner message="Loading countries..." />,
+    errorElement: <ErrorPage message="Failed to load countries" />,
     children: [
       {
         index: true,
@@ -25,12 +26,24 @@ const router = createBrowserRouter([
         path: "country/:countryName",
         element: <CountryPage />,
         loader: countryLoader,
-        hydrateFallbackElement: <div>Loading country...</div>,
-        errorElement: <div>Error loading country data.</div>,
+        hydrateFallbackElement: (
+          <LoadingSpinner message="Loading country data..." />
+        ),
+        errorElement: (
+          <ErrorPage
+            title="This country doesn't exist in our database"
+            message="Failed to load country data"
+          />
+        ),
       },
       {
         path: "*",
-        element: <ErrorPage />,
+        element: (
+          <ErrorPage
+            title="Page Not Found"
+            message="The page you're looking for doesn't exist"
+          />
+        ),
       },
     ],
   },
