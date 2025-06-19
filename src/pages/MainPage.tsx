@@ -32,7 +32,7 @@ export const MainPage = () => {
               onSearchChange={setSearchTerm}
             />
           </div>
-          <div className="w-1/2 md:w-80 md:ml-auto lg:w-96">
+          <div className="w-1/2 md:w-60 md:ml-auto lg:w-96">
             <RegionFilter
               regionFilter={regionFilter}
               onFilterChange={setRegionFilter}

@@ -14,7 +14,7 @@ export const SearchInput = ({
   return (
     <div className="relative">
       <img
-        src="/src/assets/search.svg"
+        src="/assets/search.svg"
         className="absolute left-500 top-1/2 transform -translate-y-1/2 w-4 h-4"
         alt="Search Icon"
       />

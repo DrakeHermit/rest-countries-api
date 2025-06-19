@@ -16,8 +16,8 @@ export const NavBar = () => {
           <img
             src={
               isDarkMode
-                ? "/src/assets/light-mode-toggle.svg"
-                : "/src/assets/dark-mode-toggle.svg"
+                ? "/assets/light-mode-toggle.svg"
+                : "/assets/dark-mode-toggle.svg"
             }
             className="w-5 h-5"
             alt="Icon to change the theme"
