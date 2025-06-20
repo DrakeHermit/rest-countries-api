@@ -27,7 +27,7 @@ export const CountryPage = () => {
           <img
             src={country.flags.png}
             alt={`${country.name.common} flag`}
-            className="object-cover w-full lg:w-[560px] lg:min-h-[401px] shadow-md rounded-xl"
+            className="object-contain w-full lg:w-[560px] shadow-md rounded-xl"
           />
         </div>
         <div className="lg:w-1/2">
